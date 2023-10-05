@@ -249,7 +249,7 @@ create_filters <- function(data,
 
       if (inherits(x = var, what = c("numeric", "integer"))) {
         params <- find_range_step(var)
-        if(!is.null(defaults) && label %in% names(defaults)){
+        if(!is.null(defaults) && label %in% names(defaults) && !is.null(defaults[[label]])){
           params$range = defaults[[label]]
         }
         if (identical(widget_num, "slider")) {
@@ -282,7 +282,7 @@ create_filters <- function(data,
         # browser()
         var <- pretty(var)
         range_var <- range(var)
-        if(!is.null(defaults) && label %in% names(defaults)) {
+        if(!is.null(defaults) && label %in% names(defaults) && !is.null(defaults[[label]])) {
           range_var <- defaults[[label]]
         }
         if (identical(widget_date, "slider")) {
